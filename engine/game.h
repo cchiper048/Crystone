@@ -24,5 +24,4 @@ class Game {
         InputClass *Input;
 };
 
-
 #endif
