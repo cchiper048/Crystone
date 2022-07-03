@@ -5,8 +5,12 @@
 
 class Block : public GameObject {
     public:
-        void Main(){}
-        void Update(){}
+        void Main() {
+            BoxCollider2D = true;
+        }
+        void Update() {
+            
+        }
 };
 
 #endif

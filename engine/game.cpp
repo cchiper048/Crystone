@@ -2,7 +2,7 @@
 #include <iostream>
 #include "./game.h"
 #include "./input.h"
-
+#include "./helpers/algorithm.h"
 
 Game::Game(const char *title, I32 width, I32 height) {
     SDL_Init(SDL_INIT_VIDEO | SDL_RENDERER_PRESENTVSYNC);
@@ -43,6 +43,7 @@ void Game::Loop() {
 
     for(const auto obj: this->currectScene.objects) {
         obj->Input = this->Input;
+        obj->Start();
     }
 
     while(this->running) {
@@ -58,16 +59,25 @@ void Game::Loop() {
         }
 
         // Update all Objects in currcet scene
-        for(const auto obj: this->currectScene.objects) {
-            obj->Update();
+        for(size_t i=0; i < currectScene.objects.size(); ++i) {
+            currectScene.objects[i]->Update();
+
+            if(currectScene.objects[i]->BoxCollider2D) { // Check if BoxColliding is Enabled
+                for(size_t j=i+1; j < currectScene.objects.size(); ++j) {
+                    if(AABB_Collision(*currectScene.objects[i], *currectScene.objects[j]) ) {
+                        currectScene.objects[i]->Colliding(*currectScene.objects[j]);
+                        currectScene.objects[j]->Colliding(*currectScene.objects[i]);
+                    }
+                }
+            }
             
-            if(obj->renderObject) {
+            if(currectScene.objects[i]->renderObject) {
                 SDL_SetRenderDrawColor(this->renderer, 255, 255, 255, 1);
                 SDL_Rect r;
-                r.x = obj->position.x;
-                r.y = obj->position.y;
-                r.w = obj->size.x;
-                r.h = obj->size.y;
+                r.x = currectScene.objects[i]->position.x;
+                r.y = currectScene.objects[i]->position.y;
+                r.w = currectScene.objects[i]->size.x;
+                r.h = currectScene.objects[i]->size.y;
                 SDL_RenderFillRect(this->renderer, &r);
             }
         }
