@@ -6,7 +6,7 @@
 #define WINDOW_HEIGHT 600
 #define MAX_FPS 60
 
-I32 main(U0) {
+int main(void) {
     Game game("C-137", WINDOW_WIDTH, WINDOW_HEIGHT);
     game.FPS = MAX_FPS;
     Scene scene1;
@@ -14,12 +14,12 @@ I32 main(U0) {
 
     scene1.addObject(player);
 
-    for(I32 i=0; i<20; ++i) {
+    for(int i=0; i<20; ++i) {
         Block* block = new Block();
-        block->position.x = 20*i;
-        block->position.y = 300;
-        block->size.x = 20;
-        block->size.y = 20;
+        block->transform.localPosition.x = 20*i;
+        block->transform.localPosition.y = 300;
+        block->transform.localSize.x = 20;
+        block->transform.localSize.y = 20;
         scene1.addObject(* block);
     }
 

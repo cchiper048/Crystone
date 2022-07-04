@@ -1,9 +1,15 @@
 #ifndef GAME_OBJECT_H
 #define GAME_OBJECT_H
 
+#include <string>
 #include "./helpers/vector.h"
 
 struct InputClass;
+
+struct Transform {
+    Vector2 localPosition;
+    Vector2 localSize;
+};
 
 class GameObject {
     public:
@@ -16,9 +22,10 @@ class GameObject {
         
         bool renderObject = true;
         bool BoxCollider2D = false;
-        Vector2 position;
-        Vector2 size;
         InputClass *Input;
+        Transform transform;
 };
+
+
 
 #endif

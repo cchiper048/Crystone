@@ -4,10 +4,10 @@
 #include "./input.h"
 #include "./helpers/algorithm.h"
 
-Game::Game(const char *title, I32 width, I32 height) {
+Game::Game(const char *title, int width, int height) {
     SDL_Init(SDL_INIT_VIDEO | SDL_RENDERER_PRESENTVSYNC);
 
-    this->window = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, (I32)width, (I32)height, SDL_WINDOW_SHOWN);
+    this->window = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_SHOWN);
     if (this->window == nullptr) std::cout << "ERROR : Cannot instantiate SDL_Window \n";
 
     this->renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
@@ -38,8 +38,8 @@ void Game::changeScene(Scene newScene) {
 
 void Game::Loop() {
     SDL_Event event;
-    const F32 frameDelay = 1000 / FPS;
-    U32 frameStart, frameTime;
+    const float frameDelay = 1000 / FPS;
+    int frameStart, frameTime;
 
     for(const auto obj: this->currectScene.objects) {
         obj->Input = this->Input;
@@ -74,10 +74,10 @@ void Game::Loop() {
             if(currectScene.objects[i]->renderObject) {
                 SDL_SetRenderDrawColor(this->renderer, 255, 255, 255, 1);
                 SDL_Rect r;
-                r.x = currectScene.objects[i]->position.x;
-                r.y = currectScene.objects[i]->position.y;
-                r.w = currectScene.objects[i]->size.x;
-                r.h = currectScene.objects[i]->size.y;
+                r.x = currectScene.objects[i]->transform.localPosition.x;
+                r.y = currectScene.objects[i]->transform.localPosition.y;
+                r.w = currectScene.objects[i]->transform.localSize.x;
+                r.h = currectScene.objects[i]->transform.localSize.y;
                 SDL_RenderFillRect(this->renderer, &r);
             }
         }

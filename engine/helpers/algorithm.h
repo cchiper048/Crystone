@@ -4,10 +4,10 @@
 #include "../gameObject.h"
 
 inline bool AABB_Collision(GameObject &obj1, GameObject &obj2) {
-    return  obj1.position.x < obj2.position.x + obj2.size.x &&
-            obj1.position.x + obj1.size.x > obj2.position.x &&
-            obj1.position.y < obj2.position.y + obj2.size.y &&
-            obj1.position.y + obj1.size.y > obj2.position.y;
+    return  obj1.transform.localPosition.x < obj2.transform.localPosition.x + obj2.transform.localSize.x &&
+            obj1.transform.localPosition.x + obj1.transform.localSize.x > obj2.transform.localPosition.x &&
+            obj1.transform.localPosition.y < obj2.transform.localPosition.y + obj2.transform.localSize.y &&
+            obj1.transform.localPosition.y + obj1.transform.localSize.y > obj2.transform.localPosition.y;
 }
 
 #endif

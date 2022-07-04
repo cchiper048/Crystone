@@ -5,25 +5,27 @@
 
 class Player : public GameObject {
     private:
-        Bool W,A,S,D;
+        bool leftArrow, rightArrow;
+        short int speed = 3.0f;
 
     public:
-    U0 Start() {
-        size = Vector2(75, 75);
+    void Start() {
+        transform.localSize = Vector2(120, 20);
+        transform.localPosition = Vector2(340, 550);
         BoxCollider2D = true;
     }
 
-    U0 Update() {
-        W = Input->GetButton(SDL_SCANCODE_W);
-        A = Input->GetButton(SDL_SCANCODE_A);
-        S = Input->GetButton(SDL_SCANCODE_S);
-        D = Input->GetButton(SDL_SCANCODE_D);
+    void Update() {
+        rightArrow = Input->GetButton(SDL_SCANCODE_RIGHT);
+        leftArrow  = Input->GetButton(SDL_SCANCODE_LEFT);
 
+        transform.localPosition += Vector2(speed*(rightArrow-leftArrow), 0);
+        if(transform.localPosition.x < 0) transform.localPosition.x = 0;
+        if(transform.localPosition.x + transform.localSize.x > 800) transform.localPosition.x = 800 - transform.localSize.x;
 
-        position += Vector2(1.5f*D-1.5f*A, 1.5f*S - 1.5f*W);
     }
 
-    U0 Colliding(GameObject &obj) {
+    void Colliding(GameObject &obj) {
         Debug.Log(":D");
     }
 };

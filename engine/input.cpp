@@ -1,12 +1,11 @@
 #include "./input.h"
-#include "./helpers/types.h"
 #include "SDL2/SDL.h"
 #include <iostream>
 
 InputClass::InputClass() {}
 InputClass::~InputClass() {}
 
-U0 InputClass::Update(const SDL_Event &event) {
+void InputClass::Update(const SDL_Event &event) {
     Pressed_Keys.clear();
     Released_Keys.clear();
 
@@ -20,14 +19,14 @@ U0 InputClass::Update(const SDL_Event &event) {
     }
 }
 
-Bool InputClass::GetButton(SDL_Scancode key) {
+bool InputClass::GetButton(SDL_Scancode key) {
     return Held_Keys[key];
 }
 
-inline Bool InputClass::GetButtonDown(SDL_Scancode key) {
+inline bool InputClass::GetButtonDown(SDL_Scancode key) {
     return Pressed_Keys[key];
 }
 
-inline Bool InputClass::GetButtonUp(SDL_Scancode key) {
+inline bool InputClass::GetButtonUp(SDL_Scancode key) {
     return Released_Keys[key];
 }
