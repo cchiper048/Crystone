@@ -10,9 +10,9 @@ class Player : public GameObject {
 
     public:
     void Start() {
-        transform.localSize = Vector2(120, 20);
-        transform.localPosition = Vector2(340, 550);
-        BoxCollider2D = true;
+        this->transform.localSize = Vector2(120, 20);
+        this->transform.localPosition = Vector2(340, 550);
+        this->BoxCollider2D = true;
     }
 
     void Update() {
@@ -26,7 +26,7 @@ class Player : public GameObject {
     }
 
     void Colliding(GameObject &obj) {
-        Debug.Log(":D");
+        obj.speedY = -1;
     }
 };
 

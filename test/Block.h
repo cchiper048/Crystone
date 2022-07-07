@@ -6,10 +6,12 @@
 class Block : public GameObject {
     public:
         void Main() {
-            BoxCollider2D = true;
+            this->BoxCollider2D = true;
         }
         void Update() {
-            
+        }
+        void Colliding(GameObject &obj) {
+            Debug.Log(this->transform.localPosition.x);
         }
 };
 

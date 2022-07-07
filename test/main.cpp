@@ -1,5 +1,6 @@
 #include "../engine/engine_include.h"
 #include "./Player.h"
+#include "./Ball.h"
 #include "./Block.h"
 
 #define WINDOW_WIDTH 800
@@ -11,8 +12,10 @@ int main(void) {
     game.FPS = MAX_FPS;
     Scene scene1;
     Player player;
+    Ball ball;
 
     scene1.addObject(player);
+    scene1.addObject(ball);
 
     for(int i=0; i<20; ++i) {
         Block* block = new Block();
