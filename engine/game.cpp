@@ -65,8 +65,8 @@ void Game::Loop() {
             if(currectScene.objects[i]->BoxCollider2D) { // Check if BoxColliding is Enabled
                 for(size_t j=i+1; j < currectScene.objects.size(); ++j) {
                     if(AABB_Collision(*currectScene.objects[i], *currectScene.objects[j]) ) {
-                        currectScene.objects[i]->Colliding(*currectScene.objects[j]);
-                        currectScene.objects[j]->Colliding(*currectScene.objects[i]);
+                        currectScene.objects[i]->BoxColliding(*currectScene.objects[j]);
+                        currectScene.objects[j]->BoxColliding(*currectScene.objects[i]);
                     }
                 }
             }

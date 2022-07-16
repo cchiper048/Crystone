@@ -5,7 +5,7 @@
 
 class Ball : public GameObject {
     public:
-        short int speedX = 1, speedY = 1;
+        short int speedX = -1, speedY = 1;
         void Start() {
             this->transform.localSize = Vector2(16, 16);
             this->transform.localPosition = Vector2(392, 20);
@@ -23,6 +23,11 @@ class Ball : public GameObject {
                 speedY *= -1;
 
             this->transform.localPosition += Vector2(speedX, speedY);
+        }
+
+        void BoxColliding(GameObject &obj) {
+        // obj->speedY = -1;
+            Debug.Log("Dodiruje");
         }
 };
 

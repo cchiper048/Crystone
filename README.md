@@ -20,8 +20,8 @@ Compile and Run
 - [x] Add Scene Class
 - [x] Add Developers Debug Console Functions
 - [x] Add Input Functions
-- [ ] Add Collision Detection
-- [ ] Add Sprite Rendering  
+- [x] Add Collision Detection
+- [ ] Add Sprite Rendering
 - [ ] Add Audio Functions
 - [ ] Add Functions to Parse Scene files
 - [ ] Add Basic GUI components

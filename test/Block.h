@@ -10,9 +10,6 @@ class Block : public GameObject {
         }
         void Update() {
         }
-        void Colliding(GameObject &obj) {
-            Debug.Log(this->transform.localPosition.x);
-        }
 };
 
 #endif

@@ -1,7 +1,6 @@
 #ifndef GAME_OBJECT_H
 #define GAME_OBJECT_H
 
-#include <string>
 #include "./helpers/vector.h"
 
 struct InputClass;
@@ -18,7 +17,7 @@ class GameObject {
 
         virtual void Start();
         virtual void Update();
-        virtual void Colliding(GameObject &obj);
+        virtual void BoxColliding(GameObject &obj);
         
         bool renderObject = true;
         bool BoxCollider2D = false;

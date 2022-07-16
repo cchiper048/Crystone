@@ -10,5 +10,5 @@ GameObject::~GameObject() {};
 
 void GameObject::Start() {};
 void GameObject::Update() {};
-void GameObject::Colliding(GameObject &obj) {};
+void GameObject::BoxColliding(GameObject &obj) {};
 
