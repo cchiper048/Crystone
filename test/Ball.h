@@ -7,6 +7,7 @@ class Ball : public GameObject {
     public:
         short int speedX = -1, speedY = 1;
         void Start() {
+            this->name = "Ball";
             this->transform.localSize = Vector2(16, 16);
             this->transform.localPosition = Vector2(392, 20);
             this->BoxCollider2D = true;
@@ -26,8 +27,8 @@ class Ball : public GameObject {
         }
 
         void BoxColliding(GameObject &obj) {
-        // obj->speedY = -1;
-            Debug.Log("Dodiruje");
+            // obj->speedY = -1;
+            // Debug.Log("Dodiruje");
         }
 };
 

@@ -4,6 +4,8 @@
 
 GameObject::GameObject() {
     this->Input = nullptr;
+    this->name = "";
+    this->tag = "";
 }
 
 GameObject::~GameObject() {};

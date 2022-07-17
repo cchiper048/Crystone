@@ -23,6 +23,10 @@ class Player : public GameObject {
             if(transform.localPosition.x < 0) transform.localPosition.x = 0;
             if(transform.localPosition.x + transform.localSize.x > 800) transform.localPosition.x = 800 - transform.localSize.x;
         }
+
+        void BoxColliding(GameObject &obj) {
+            Debug.Log(obj.name);
+        }
 };
 
 #endif

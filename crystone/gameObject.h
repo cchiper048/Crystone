@@ -2,6 +2,7 @@
 #define GAME_OBJECT_H
 
 #include "./helpers/vector.h"
+#include <string>
 
 struct InputClass;
 
@@ -19,12 +20,13 @@ class GameObject {
         virtual void Update();
         virtual void BoxColliding(GameObject &obj);
         
+        std::string name;
+        std::string tag;
         bool renderObject = true;
         bool BoxCollider2D = false;
         InputClass *Input;
         Transform transform;
 };
-
 
 
 #endif
