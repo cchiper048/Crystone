@@ -18,7 +18,7 @@ class Game {
     private:
         SDL_Window *window;
         SDL_Renderer *renderer;
-        SDL_bool running;
+        bool running;
         Scene currectScene;
         InputClass *Input;
 };

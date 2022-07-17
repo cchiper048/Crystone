@@ -14,7 +14,7 @@ Game::Game(const char *title, int width, int height) {
     if (this->renderer == nullptr) std::cout << "ERROR : Cannot instantiate SDL_Renderer \n";
 
     this->FPS = 60;
-    this->running = SDL_TRUE;
+    this->running = true;
     this->currectScene = Scene();
     this->Input = new InputClass();
 }
@@ -52,7 +52,7 @@ void Game::Loop() {
         while (SDL_PollEvent(&event)) {
             switch (event.type) {
             case SDL_QUIT: // Close window
-                this->running = SDL_FALSE;
+                this->running = false;
                 break;
             }
             Input->Update(event);
