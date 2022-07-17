@@ -2,18 +2,6 @@
 
 A 2D game engine made for learning purposes
 
-## Runing Test "Game"
-
-Enable Shell script in Linux:
-```
-chmod +x build.sh
-```
-
-Compile and Run
-```
-./build.sh
-```
-
 ## ToDo
 - [x] Add Game Class
 - [x] Add GameObject Class

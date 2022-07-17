@@ -1,7 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "../crystone/engine_include.h"
+#include "../Crystone/engine_include.h"
 
 class Player : public GameObject {
     private:

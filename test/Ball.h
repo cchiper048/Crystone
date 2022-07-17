@@ -1,7 +1,7 @@
 #ifndef BALL_H
 #define BALL_H
 
-#include "../crystone/engine_include.h"
+#include "../Crystone/engine_include.h"
 
 class Ball : public GameObject {
     public:

@@ -1,7 +1,7 @@
 #ifndef BLOCK_H
 #define BLOCK_H
 
-#include "../crystone/engine_include.h"
+#include "../Crystone/engine_include.h"
 
 class Block : public GameObject {
     public:
