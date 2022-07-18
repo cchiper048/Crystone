@@ -3,6 +3,8 @@
 #include "./game.h"
 #include "./input.h"
 #include "./helpers/algorithm.h"
+#include <utility>
+#include <string>
 
 Game::Game(const char *title, int width, int height) {
     SDL_Init(SDL_INIT_VIDEO | SDL_RENDERER_PRESENTVSYNC);
@@ -58,15 +60,16 @@ void Game::Loop() {
             Input->Update(event);
         }
 
-        // Update all Objects in currcet scene
+        // Update all Objects in current scene
         for(size_t i=0; i < currectScene.objects.size(); ++i) {
             currectScene.objects[i]->Update();
 
             if(currectScene.objects[i]->BoxCollider2D) { // Check if BoxColliding is Enabled
                 for(size_t j=i+1; j < currectScene.objects.size(); ++j) {
                     if(AABB_Collision(*currectScene.objects[i], *currectScene.objects[j]) ) {
-                        currectScene.objects[i]->BoxColliding(*currectScene.objects[j]);
-                        currectScene.objects[j]->BoxColliding(*currectScene.objects[i]);
+                        std::pair<std::string, std::string> sides = collisionSide(*currectScene.objects[i], *currectScene.objects[j]);
+                        currectScene.objects[i]->BoxColliding(*currectScene.objects[j], sides.second);
+                        currectScene.objects[j]->BoxColliding(*currectScene.objects[i], sides.first);
                     }
                 }
             }

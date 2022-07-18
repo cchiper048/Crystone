@@ -26,9 +26,12 @@ class Ball : public GameObject {
             this->transform.localPosition += Vector2(speedX, speedY);
         }
 
-        void BoxColliding(GameObject &obj) {
-            // obj->speedY = -1;
-            // Debug.Log("Dodiruje");
+        void BoxColliding(GameObject &obj, std::string Direction) {
+            if(obj.name == "Player") {
+                 this->speedY = -1;
+                 this->transform.localPosition.y = obj.transform.localPosition.y - this->transform.localSize.y;
+            }
+            Debug.Log(Direction);
         }
 };
 

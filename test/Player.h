@@ -10,6 +10,7 @@ class Player : public GameObject {
 
     public:
         void Start() {
+            this->name = "Player";
             this->transform.localSize = Vector2(120, 20);
             this->transform.localPosition = Vector2(340, 550);
             this->BoxCollider2D = true;
@@ -22,10 +23,6 @@ class Player : public GameObject {
             transform.localPosition += Vector2(speed*(rightArrow-leftArrow), 0);
             if(transform.localPosition.x < 0) transform.localPosition.x = 0;
             if(transform.localPosition.x + transform.localSize.x > 800) transform.localPosition.x = 800 - transform.localSize.x;
-        }
-
-        void BoxColliding(GameObject &obj) {
-            Debug.Log(obj.name);
         }
 };
 

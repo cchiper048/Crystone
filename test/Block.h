@@ -8,7 +8,15 @@ class Block : public GameObject {
         void Main() {
             this->BoxCollider2D = true;
         }
+
         void Update() {
+        }
+
+        void BoxColliding(GameObject &obj, std::string Direction) {
+            if(obj.name == "Ball") {
+                this->renderObject = false;
+                this->BoxCollider2D = false;
+            }
         }
 };
 
