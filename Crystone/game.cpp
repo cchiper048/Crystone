@@ -34,14 +34,14 @@ void Game::Present() {
     SDL_RenderClear(this->renderer);
 }
 
-void Game::changeScene(Scene newScene) {
+void Game::changeScene(const Scene newScene) {
     this->currectScene = newScene;
 }
 
 void Game::Loop() {
     SDL_Event event;
-    const float frameDelay = 1000 / FPS;
-    int frameStart, frameTime;
+    const float frameDelay = 1000.0F / (float)FPS;
+    unsigned int frameStart, frameTime;
 
     for(const auto obj: this->currectScene.objects) {
         obj->Input = this->Input;
@@ -66,10 +66,10 @@ void Game::Loop() {
 
             if(currectScene.objects[i]->BoxCollider2D) { // Check if BoxColliding is Enabled
                 for(size_t j=i+1; j < currectScene.objects.size(); ++j) {
-                    if(AABB_Collision(*currectScene.objects[i], *currectScene.objects[j]) ) {
-                        std::pair<std::string, std::string> sides = collisionSide(*currectScene.objects[i], *currectScene.objects[j]);
-                        currectScene.objects[i]->BoxColliding(*currectScene.objects[j], sides.second);
-                        currectScene.objects[j]->BoxColliding(*currectScene.objects[i], sides.first);
+                    if(AABB_Collision(*currectScene.objects[i], *currectScene.objects[j]) && currectScene.objects[j]->BoxCollider2D) {
+                        const std::pair<std::string, std::string> sides = collisionSide(*currectScene.objects[i], *currectScene.objects[j]);
+                        currectScene.objects[i]->BoxColliding(*currectScene.objects[j], sides.first);
+                        currectScene.objects[j]->BoxColliding(*currectScene.objects[i], sides.second);
                     }
                 }
             }
@@ -77,10 +77,10 @@ void Game::Loop() {
             if(currectScene.objects[i]->renderObject) {
                 SDL_SetRenderDrawColor(this->renderer, 255, 255, 255, 1);
                 SDL_Rect r;
-                r.x = currectScene.objects[i]->transform.localPosition.x;
-                r.y = currectScene.objects[i]->transform.localPosition.y;
-                r.w = currectScene.objects[i]->transform.localSize.x;
-                r.h = currectScene.objects[i]->transform.localSize.y;
+                r.x = (int)currectScene.objects[i]->transform.localPosition.x;
+                r.y = (int)currectScene.objects[i]->transform.localPosition.y;
+                r.w = (int)currectScene.objects[i]->transform.localSize.x;
+                r.h = (int)currectScene.objects[i]->transform.localSize.y;
                 SDL_RenderFillRect(this->renderer, &r);
             }
         }
@@ -88,8 +88,8 @@ void Game::Loop() {
         Game::Present();
     
         frameTime = SDL_GetTicks() - frameStart;
-        if(frameDelay > frameTime) {
-            SDL_Delay(frameDelay - frameTime);
+        if(frameDelay > (float)frameTime) {
+            SDL_Delay((unsigned)frameDelay - frameTime);
         }
     }
 }

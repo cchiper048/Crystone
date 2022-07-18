@@ -12,5 +12,5 @@ GameObject::~GameObject() {};
 
 void GameObject::Start() {};
 void GameObject::Update() {};
-void GameObject::BoxColliding(GameObject &obj, std::string Dirrection) {};
+void GameObject::BoxColliding(GameObject &obj, const std::string direction) {};
 

@@ -1,7 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "../Crystone/engine_include.h"
+#include "../Crystone/Crystone.h"
 
 class Player : public GameObject {
     private:
@@ -9,14 +9,14 @@ class Player : public GameObject {
         short int speed = 3.0f;
 
     public:
-        void Start() {
+        void Start() override {
             this->name = "Player";
             this->transform.localSize = Vector2(120, 20);
             this->transform.localPosition = Vector2(340, 550);
             this->BoxCollider2D = true;
         }
 
-        void Update() {
+        void Update() override {
             rightArrow = Input->GetButton(SDL_SCANCODE_RIGHT);
             leftArrow  = Input->GetButton(SDL_SCANCODE_LEFT);
 

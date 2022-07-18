@@ -1,18 +1,18 @@
 #ifndef BLOCK_H
 #define BLOCK_H
 
-#include "../Crystone/engine_include.h"
+#include "../Crystone/Crystone.h"
 
 class Block : public GameObject {
     public:
-        void Main() {
+        void Start() {
             this->BoxCollider2D = true;
         }
 
-        void Update() {
+        void Update() override {
         }
 
-        void BoxColliding(GameObject &obj, std::string Direction) {
+        void BoxColliding(GameObject &obj, const std::string direction) override {
             if(obj.name == "Ball") {
                 this->renderObject = false;
                 this->BoxCollider2D = false;

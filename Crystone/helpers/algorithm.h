@@ -17,8 +17,8 @@ inline bool AABB_Collision(GameObject &obj1, GameObject &obj2) {
 inline std::pair<std::string, std::string> collisionSide(GameObject &obj1, GameObject &obj2) {
     const float obj1B_obj2T = abs((obj1.transform.localPosition.y + obj1.transform.localSize.y) - obj2.transform.localPosition.y );
     const float obj1T_obj2B = abs(obj1.transform.localPosition.y - (obj2.transform.localPosition.y + obj2.transform.localSize.y) );
-    const float obj1L_obj2R = abs((obj1.transform.localPosition.y + obj1.transform.localSize.y) - obj2.transform.localPosition.y );
-    const float obj1R_obj2L = abs(obj1.transform.localPosition.x - (obj2.transform.localPosition.x + obj2.transform.localSize.x) );
+    const float obj1L_obj2R = abs(obj1.transform.localPosition.x - (obj2.transform.localPosition.x + obj2.transform.localSize.x) );
+    const float obj1R_obj2L = abs((obj1.transform.localPosition.x + obj1.transform.localSize.x) - obj2.transform.localPosition.x );
 
     const float minimumD = std::min(std::min(obj1B_obj2T, obj1T_obj2B), std::min(obj1L_obj2R, obj1R_obj2L));
 

@@ -18,7 +18,7 @@ class GameObject {
 
         virtual void Start();
         virtual void Update();
-        virtual void BoxColliding(GameObject &obj, std::string Dirrection);
+        virtual void BoxColliding(GameObject &obj, std::string dirrection);
         
         std::string name;
         std::string tag;
