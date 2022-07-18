@@ -53,8 +53,6 @@ class Ball : public GameObject {
             if(obj.name == "Player") {
                 this->speedY = -2;
             }
-
-            Debug.Log(this->transform.localPosition.y);
         }
 };
 
