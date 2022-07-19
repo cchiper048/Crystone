@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include "./scene.h"
+#include <string>
 
 struct InputClass;
 struct SDL_Window;

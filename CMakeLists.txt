@@ -10,4 +10,4 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Crystone/*.h ${CMAKE_CURRENT_SOU
 
 add_executable(Crystone ${sources})
 
-target_link_libraries(Crystone ${SDL2_LIBRARIES})
+target_link_libraries(Crystone ${SDL2_LIBRARIES} -ldl -lpthread)

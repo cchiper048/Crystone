@@ -19,11 +19,14 @@ Game::Game(const char *title, int width, int height) {
     this->running = true;
     this->currectScene = Scene();
     this->Input = new InputClass();
+
+
 }
 
 Game::~Game() {
     SDL_DestroyRenderer(this->renderer);
     SDL_DestroyWindow(this->window);
+    delete this->Input;
 
     SDL_Quit();
 }
