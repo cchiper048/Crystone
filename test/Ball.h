@@ -1,7 +1,7 @@
 #ifndef BALL_H
 #define BALL_H
 
-#include "../Crystone/Crystone.h"
+#include "../Qhilius/Qhilius.h"
 
 class Ball : public GameObject {
     public:

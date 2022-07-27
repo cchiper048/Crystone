@@ -1,7 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "../Crystone/Crystone.h"
+#include "../Qhilius/Qhilius.h"
 
 class Player : public GameObject {
     private:
