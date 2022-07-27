@@ -1,4 +1,4 @@
-# Crystone Engine
+# Qhilius Engine
 
 A 2D game engine made for learning purposes
 
