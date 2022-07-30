@@ -8,7 +8,7 @@ GameObject::GameObject() {
     this->tag = "";
 }
 
-GameObject::~GameObject() {};
+GameObject::~GameObject() = default;;
 
 void GameObject::Start() {};
 void GameObject::Update() {};

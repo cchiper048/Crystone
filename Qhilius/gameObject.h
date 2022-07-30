@@ -2,13 +2,22 @@
 #define GAME_OBJECT_H
 
 #include "./helpers/vector.h"
+#include "./helpers/connectedValue.h"
 #include <string>
 
 struct InputClass;
 
-struct Transform {
-    Vector2 localPosition;
-    Vector2 localSize;
+struct Rect {
+    Rect() {
+            this->right = connectedValue(&this->x, &this->width);
+            this->bottom = connectedValue(&this->y, &this->height);
+    };
+    float x{};
+    float y{};
+    float  width{};
+    float height{};
+    connectedValue right{};
+    connectedValue bottom{};
 };
 
 class GameObject {
@@ -25,7 +34,7 @@ class GameObject {
         bool renderObject = true;
         bool BoxCollider2D = false;
         InputClass *Input;
-        Transform transform;
+        Rect rect;
 };
 
 

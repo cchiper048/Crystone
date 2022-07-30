@@ -11,8 +11,10 @@ class Player : public GameObject {
     public:
         void Start() override {
             this->name = "Player";
-            this->transform.localSize = Vector2(120, 20);
-            this->transform.localPosition = Vector2(340, 550);
+            this->rect.width = 120;
+            this->rect.height = 20;
+            this->rect.x = 340;
+            this->rect.y = 550;
             this->BoxCollider2D = true;
         }
 
@@ -20,9 +22,9 @@ class Player : public GameObject {
             rightArrow = Input->GetButton(SDL_SCANCODE_RIGHT);
             leftArrow  = Input->GetButton(SDL_SCANCODE_LEFT);
 
-            transform.localPosition += Vector2(speed*(rightArrow-leftArrow), 0);
-            if(transform.localPosition.x < 0) transform.localPosition.x = 0;
-            if(transform.localPosition.x + transform.localSize.x > 800) transform.localPosition.x = 800 - transform.localSize.x;
+            this->rect.x += speed*(rightArrow-leftArrow);
+            if(rect.x < 0) rect.x = 0;
+            if(rect.x + rect.width > 800) rect.x = 800 - rect.width;
         }
 };
 

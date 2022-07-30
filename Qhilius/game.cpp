@@ -80,10 +80,10 @@ void Game::Loop() {
             if(currectScene.objects[i]->renderObject) {
                 SDL_SetRenderDrawColor(this->renderer, 255, 255, 255, 1);
                 SDL_Rect r;
-                r.x = (int)currectScene.objects[i]->transform.localPosition.x;
-                r.y = (int)currectScene.objects[i]->transform.localPosition.y;
-                r.w = (int)currectScene.objects[i]->transform.localSize.x;
-                r.h = (int)currectScene.objects[i]->transform.localSize.y;
+                r.x = (int)currectScene.objects[i]->rect.x;
+                r.y = (int)currectScene.objects[i]->rect.y;
+                r.w = (int)currectScene.objects[i]->rect.width;
+                r.h = (int)currectScene.objects[i]->rect.height;
                 SDL_RenderFillRect(this->renderer, &r);
             }
         }

@@ -8,46 +8,50 @@ class Ball : public GameObject {
         short int speedX = -2, speedY = 2;
         void Start() override {
             this->name = "Ball";
-            this->transform.localSize = Vector2(16, 16);
-            this->transform.localPosition = Vector2(392, 530);
+            this->rect.width = 16;
+            this->rect.height = 16;
+
+            this->rect.x = 392;
+            this->rect.y = 530;
             this->BoxCollider2D = true;
         }
 
         void Update() override {
-            if (this->transform.localPosition.x < 0) {
-                this->transform.localPosition.x = 0;
+            if (this->rect.x < 0) {
+                this->rect.x = 0;
                 speedX *= -1;
             }
 
-            if (this->transform.localPosition.x + this->transform.localSize.x > 800) {
-                this->transform.localPosition.x = 800-this->transform.localSize.x;
+            if (this->rect.right > 800) {
+                this->rect.right = 800;
                 speedX *= -1;
             }
 
-            if (this->transform.localPosition.y < 0) {
-                this->transform.localPosition.y = 0;
+            if (this->rect.y < 0) {
+                this->rect.y = 0;
                 speedY *= -1;
             }
 
-            this->transform.localPosition += Vector2(speedX, speedY);
+            this->rect.x += speedX;
+            this->rect.y += speedY;
         }
 
         void BoxColliding(GameObject &obj, std::string direction) override {
             if(direction == "Top") {
                 this->speedY = 2;
-                this->transform.localPosition.y = obj.transform.localPosition.y + obj.transform.localSize.y;
+                this->rect.y = obj.rect.y + obj.rect.height;
             }
             else if(direction == "Bottom") {
                 this->speedY = -2;
-                this->transform.localPosition.y = obj.transform.localPosition.y - this->transform.localSize.y;
+                this->rect.y = obj.rect.y - this->rect.height;
             }
             else if(direction == "Left") {
                 this->speedX = 2;
-                this->transform.localPosition.x = obj.transform.localPosition.x + obj.transform.localSize.x;
+                this->rect.x = obj.rect.x + obj.rect.width;
             }
             else if(direction == "Right") {
                 this->speedX = -2;
-                this->transform.localPosition.x = obj.transform.localPosition.x - this->transform.localSize.x;
+                this->rect.x = obj.rect.x - this->rect.width;
             }
 
             if(obj.name == "Player") {

@@ -23,10 +23,10 @@ int main() {
     for(int i=0; i<5; ++i) {
         for (int j = 0; j < 9; ++j) {
             Block *block = new Block();
-            block->transform.localPosition.x = (float)(8.5 + 85 * j + j*2);
-            block->transform.localPosition.y = (float)(20 + 30*i + i*2);
-            block->transform.localSize.x = 85;
-            block->transform.localSize.y = 30;
+            block->rect.x = (float)(8.5 + 85 * j + j*2);
+            block->rect.y = (float)(20 + 30*i + i*2);
+            block->rect.width = 85;
+            block->rect.height = 30;
             scene1.addObject(*block);
             blocks.push_back(block);
         }
